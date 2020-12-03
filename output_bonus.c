@@ -6,12 +6,11 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 23:13:25 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/04 00:01:32 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/04 00:26:51 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fml_bonus.h"
-
 
 void	change_color(mode_t mode)
 {

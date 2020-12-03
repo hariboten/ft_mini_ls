@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 22:17:04 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 22:18:26 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/04 00:26:28 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		main(int argc, char **argv)
 	{
 		if (fml_init_with_arg(&fml, argc, argv) < 0)
 			return (-1);
-	} else if (fml_init(&fml) < 0)
+	}
+	else if (fml_init(&fml) < 0)
 		return (-1);
 	exit_state = ft_mini_ls(&fml);
 	if (fml_destroy(&fml) < 0)
