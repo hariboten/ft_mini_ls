@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:14:45 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 19:37:54 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:56:46 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		*index_sort(bool cmp(int, int, const void *), const void *ref, int size)
 
 int		sort(t_fml *fml)
 {
-	if (!(fml->index = index_sort(cmp_mtime_newer, fml, fml->num_ent)))
+	if (!(fml->index = index_sort(fml->f_cmp, fml, fml->num_ent)))
 	{
 		perror("ft_mini_ls");
 		return (-1);

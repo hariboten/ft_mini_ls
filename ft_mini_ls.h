@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 13:09:11 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 14:36:32 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:58:35 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,24 @@ typedef struct			s_fml
 	t_dirent	**dirent_arr;
 	int			*index;
 	int			num_ent;
+
+	bool		(*f_cmp)(int, int, const void *);
+	void		(*f_output)(struct s_fml *);
+	void		(*f_put_file_name)(const t_dirent *);
+	bool		(*f_ignore_dot)(t_dirent *);
 }						t_fml;
 
 int						ft_mini_ls(t_fml *fml);
 int						fml_init(t_fml *fml);
 int						fml_destroy(t_fml *fml);
+
 int						input(t_fml *fml);
 int						sort(t_fml *fml);
+
 void					output(t_fml *fml);
+void					put_file_name(const t_dirent *file);
+bool					ignore_dot(const t_dirent *name);
+
+bool					cmp_mtime_newer(int lhs, int rhs, const void *ref);
 
 #endif

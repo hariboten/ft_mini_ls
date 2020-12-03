@@ -6,11 +6,20 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:15:51 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 14:20:05 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:59:47 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mini_ls.h"
+
+bool	ignore_dot(const t_dirent *file)
+{
+	if (!file)
+		return (false);
+	if (file->d_name[0] == '.')
+		return (false);
+	return (true);
+}
 
 void	put_file_name(const t_dirent *file)
 {
@@ -25,5 +34,6 @@ void	output(t_fml *fml)
 
 	i = fml->num_ent;
 	while (--i >= 0)
-		put_file_name(fml->dirent_arr[fml->index[i]]);
+		if (fml->f_ignore_dot(fml->dirent_arr[fml->index[i]]))
+			fml->f_put_file_name(fml->dirent_arr[fml->index[i]]);
 }
