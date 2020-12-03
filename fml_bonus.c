@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:07:01 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 22:32:39 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:40:26 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ void	change_color(mode_t mode)
 		ft_putstr("\x1b[34m\x1b[49m");
 	if (S_ISLNK(mode))
 		ft_putstr("\x1b[35m\x1b[49m");
-	if (false)
+	if (mode & S_IFSOCK)
 		ft_putstr("\x1b[32m\x1b[49m");
 	if (S_ISFIFO(mode))
 		ft_putstr("\x1b[33m\x1b[49m");
-	if (mode & S_IXUSR)
+	if (!S_ISDIR(mode) && mode & S_IXUSR)
 		ft_putstr("\x1b[31m\x1b[49m");
 	if (S_ISBLK(mode))
 		ft_putstr("\x1b[34m\x1b[46m");
 	if (S_ISCHR(mode))
 		ft_putstr("\x1b[34m\x1b[43m");
-	if (mode & S_ISUID)
+	if (!S_ISDIR(mode) && mode & S_ISUID)
 		ft_putstr("\x1b[30m\x1b[41m");
-	if (mode & S_ISGID)
+	if (!S_ISDIR(mode) && mode & S_ISGID)
 		ft_putstr("\x1b[30m\x1b[46m");
 	if (S_ISDIR(mode) && mode & S_IXOTH && mode & S_ISVTX)
 		ft_putstr("\x1b[30m\x1b[42m");
