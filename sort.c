@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:14:45 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 14:20:59 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 19:15:36 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,18 @@ bool	cmp_mtime_newer(int lhs, int rhs, const void *ref)
 	const t_fml	*fml;
 
 	fml = (const t_fml *)ref;
-	if (fml->stat_arr[lhs].st_mtime != fml->stat_arr[rhs].st_mtime)
-		return (fml->stat_arr[lhs].st_mtime > fml->stat_arr[rhs].st_mtime);
+	if (fml->stat_arr[lhs].st_mtimespec.tv_sec
+			!= fml->stat_arr[rhs].st_mtimespec.tv_sec)
+	{
+		return (fml->stat_arr[lhs].st_mtimespec.tv_sec
+				< fml->stat_arr[rhs].st_mtimespec.tv_sec);
+	}
+	if (fml->stat_arr[lhs].st_mtimespec.tv_nsec
+			!= fml->stat_arr[rhs].st_mtimespec.tv_nsec)
+	{
+		return (fml->stat_arr[lhs].st_mtimespec.tv_nsec
+				< fml->stat_arr[rhs].st_mtimespec.tv_nsec);
+	}
 	if (ft_strcmp(fml->dirent_arr[lhs]->d_name,
 				fml->dirent_arr[rhs]->d_name) < 0)
 	{
