@@ -6,7 +6,7 @@
 #    By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 12:35:08 by ewatanab          #+#    #+#              #
-#    Updated: 2020/12/03 22:21:10 by ewatanab         ###   ########.fr        #
+#    Updated: 2020/12/03 23:17:11 by ewatanab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ BSRC	= main_bonus.c \
 		  input.c \
 		  sort.c \
 		  output.c \
-		  fml_bonus.c
+		  fml_bonus.c \
+		  fml_cmp_bonus.c \
+		  output_bonus.c
 BOBJ	= $(BSRC:%.c=%.o)
 LIBFT	= ./libft/libft.a
 CFLAGS = -Wall -Werror -Wextra -g -O0
