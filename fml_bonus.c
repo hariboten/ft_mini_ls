@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:07:01 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 23:21:54 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 23:34:10 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		option_branch(t_fml *fml, char opt)
 	else if (opt == 'u')
 		fml->f_cmp = cmp_atime_newer;
 	else if (opt == 'U')
-		fml->f_cmp = do_not_sort;
+		fml->f_cmp = cmp_ctime_newer;
 	else if (opt == 't')
 		fml->f_cmp = cmp_name_less;
 	else if (opt == 'r')

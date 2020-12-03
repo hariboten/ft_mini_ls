@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:08:06 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 23:07:28 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 23:31:50 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	put_file_name_with_color(const t_dirent *file);
 void	output_ascending(t_fml *fml);
 bool	show_all_file(const t_dirent *file);
 
-bool	do_not_sort(int lhs, int rhs, const void *ref);
 bool	cmp_fsize_larger(int lhs, int rhs, const void *ref);
 bool	cmp_atime_newer(int lhs, int rhs, const void *ref);
+bool	cmp_ctime_newer(int lhs, int rhs, const void *ref);
 bool	cmp_name_less(int lhs, int rhs, const void *ref);
 
 #endif
