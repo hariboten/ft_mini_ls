@@ -6,53 +6,28 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:07:01 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 22:48:45 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 23:14:17 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fml_bonus.h"
 
-void	change_color(mode_t mode)
-{
-	if (S_ISDIR(mode))
-		ft_putstr("\x1b[34m\x1b[49m");
-	if (S_ISLNK(mode))
-		ft_putstr("\x1b[35m\x1b[49m");
-	if (mode & S_IFSOCK && false)
-		ft_putstr("\x1b[32m\x1b[49m");
-	if (S_ISFIFO(mode))
-		ft_putstr("\x1b[33m\x1b[49m");
-	if (!S_ISDIR(mode) && mode & S_IXUSR)
-		ft_putstr("\x1b[31m\x1b[49m");
-	if (S_ISBLK(mode))
-		ft_putstr("\x1b[34m\x1b[46m");
-	if (S_ISCHR(mode))
-		ft_putstr("\x1b[34m\x1b[43m");
-	if (!S_ISDIR(mode) && mode & S_ISUID)
-		ft_putstr("\x1b[30m\x1b[41m");
-	if (!S_ISDIR(mode) && mode & S_ISGID)
-		ft_putstr("\x1b[30m\x1b[46m");
-	if (S_ISDIR(mode) && mode & S_IWOTH && mode & S_ISVTX)
-		ft_putstr("\x1b[30m\x1b[42m");
-	if (S_ISDIR(mode) && mode & S_IWOTH && !(mode & S_ISVTX))
-		ft_putstr("\x1b[30m\x1b[43m");
-}
-
-void	put_file_name_with_color(const t_dirent *file)
-{
-	t_stat	sb;
-
-	if (stat(file->d_name, &sb) < 0)
-		return ;
-	change_color(sb.st_mode);
-	ft_putstr_fd((char *)file->d_name, 1);
-	ft_putendl_fd("\x1b[39m\x1b[49m", 1);
-}
-
 int		option_branch(t_fml *fml, char opt)
 {
 	if (opt == 'G')
 		fml->f_put_file_name = put_file_name_with_color;
+	else if (opt == 'S')
+		fml->f_cmp = cmp_fsize_larger;
+	else if (opt == 'u')
+		fml->f_cmp = cmp_atime_newer;
+	else if (opt == 'U')
+		fml->f_cmp = do_not_sort;
+	else if (opt == 't')
+		fml->f_cmp = cmp_name_less;
+	else if (opt == 'r')
+		fml->f_output = output_ascending;
+	else if (opt == 'a')
+		fml->f_ignore_dot = show_all_file;
 	else
 	{
 		ft_putendl_fd("ft_mini_ls: invailed arg", 2);
