@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:07:01 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 23:14:17 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 23:21:54 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int		parse_arg(t_fml *fml, int argc, char **argv)
 			ft_putendl_fd("ft_mini_ls: invailed arg", 2);
 			return (-1);
 		}
-		while (*argv[i])
-			if (option_branch(fml, *argv[i]++) < -1)
+		while (*++argv[i])
+			if (option_branch(fml, *argv[i]) < 0)
 				return (-1);
 	}
 	return (0);
