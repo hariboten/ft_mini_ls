@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:07:01 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 22:16:28 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:32:39 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	change_color(mode_t mode)
 		ft_putstr("\x1b[34m\x1b[49m");
 	if (S_ISLNK(mode))
 		ft_putstr("\x1b[35m\x1b[49m");
-	if (mode & S_IFSOCK)
+	if (false)
 		ft_putstr("\x1b[32m\x1b[49m");
 	if (S_ISFIFO(mode))
 		ft_putstr("\x1b[33m\x1b[49m");
@@ -45,8 +45,8 @@ void	put_file_name_with_color(const t_dirent *file)
 	if (stat(file->d_name, &sb) < 0)
 		return ;
 	change_color(sb.st_mode);
-	ft_putendl_fd((char *)file->d_name, 1);
-	ft_putstr("\x1b[39m\x1b[49m");
+	ft_putstr_fd((char *)file->d_name, 1);
+	ft_putendl_fd("\x1b[39m\x1b[49m", 1);
 }
 
 int		option_branch(t_fml *fml, char opt)
