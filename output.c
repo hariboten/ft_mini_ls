@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:15:51 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 20:59:47 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 21:18:15 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ bool	ignore_dot(const t_dirent *file)
 
 void	put_file_name(const t_dirent *file)
 {
-	if (file->d_name[0] == '.')
-		return ;
 	ft_putendl_fd((char *)file->d_name, 1);
 }
 
