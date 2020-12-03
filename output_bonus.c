@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 23:13:25 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 23:14:12 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/04 00:01:32 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_file_name_with_color(const t_dirent *file)
 {
 	t_stat	sb;
 
-	if (stat(file->d_name, &sb) < 0)
+	if (lstat(file->d_name, &sb) < 0)
 		return ;
 	change_color(sb.st_mode);
 	ft_putstr_fd((char *)file->d_name, 1);

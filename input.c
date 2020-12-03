@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 14:11:46 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 22:26:25 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/04 00:01:37 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		get_dir_stats(t_fml *fml)
 	i = 0;
 	while (i < fml->num_ent)
 	{
-		if (stat(fml->dirent_arr[i]->d_name, &tmp))
+		if (lstat(fml->dirent_arr[i]->d_name, &tmp))
 			return (-1);
 		fml->stat_arr[i++] = tmp;
 	}
