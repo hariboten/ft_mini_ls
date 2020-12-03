@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:16:20 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/09/25 11:29:11 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 14:30:37 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap\
 					(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list		*ft_lstfind(t_list *lst, int cmp(), void *key);
-t_list		*ft_lstfindb(t_list *lst, bool cmp(), void *key);
-void	ft_lstdelif(t_list **begin_list, void (*del)(), int (*cmp)(), void *key);
-void	ft_lstdelifb(t_list **begin_list, void (*del)(), bool (*cmp)(), void *key);
+t_list			*ft_lstfind(t_list *lst, int cmp(), void *key);
+t_list			*ft_lstfindb(t_list *lst, bool cmp(), void *key);
+void			**ft_lsttov(t_list *lst);
+void			ft_lstvclear(void **lst);
 
 #endif

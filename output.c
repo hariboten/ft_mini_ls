@@ -1,46 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mini_ls.c                                       :+:      :+:    :+:   */
+/*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 13:15:05 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/03 14:16:34 by ewatanab         ###   ########.fr       */
+/*   Created: 2020/12/03 14:15:51 by ewatanab          #+#    #+#             */
+/*   Updated: 2020/12/03 14:20:05 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mini_ls.h"
 
-int		fml_init(t_fml *fml)
+void	put_file_name(const t_dirent *file)
 {
-	*fml = (t_fml){0};
-	if (!(fml->dir = opendir("./")))
-	{
-		perror("ft_mini_ls");
-		return (-1);
-	}
-	return (0);
+	if (file->d_name[0] == '.')
+		return ;
+	ft_putendl_fd((char *)file->d_name, 1);
 }
 
-int		fml_destroy(t_fml *fml)
+void	output(t_fml *fml)
 {
-	free(fml->stat_arr);
-	free(fml->dirent_arr);
-	free(fml->index);
-	if (closedir(fml->dir) < 0)
-	{
-		perror("ft_mini_ls");
-		return (-1);
-	}
-	return (0);
-}
+	int		i;
 
-int		ft_mini_ls(t_fml *fml)
-{
-	input(fml);
-	if (sort(fml) < 0)
-		return (-1);
-	output(fml);
-	return (0);
+	i = fml->num_ent;
+	while (--i >= 0)
+		put_file_name(fml->dirent_arr[fml->index[i]]);
 }

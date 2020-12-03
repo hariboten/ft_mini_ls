@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execvp.c                                        :+:      :+:    :+:   */
+/*   ft_lsttov.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 11:43:03 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/09/27 13:20:36 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/12/03 14:32:03 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	**ft_lsttov(t_list *lst)
 {
-	int		len;
 	void	**vec;
 	void	**ret;
 
-	len = ft_lstsize(lst);
-	if (!(vec = malloc(sizeof(void **) * (len + 1))))
+	if (!(vec = ft_calloc(ft_lstsize(lst) + 1, sizeof(void *))))
 		return (NULL);
 	ret = vec;
 	while (lst)

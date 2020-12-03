@@ -6,13 +6,16 @@
 #    By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 12:35:08 by ewatanab          #+#    #+#              #
-#    Updated: 2020/12/02 14:25:37 by ewatanab         ###   ########.fr        #
+#    Updated: 2020/12/03 14:17:10 by ewatanab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= ft_mini_ls
 SRC		= main.c \
-		  ft_mini_ls.c
+		  ft_mini_ls.c \
+		  input.c \
+		  sort.c \
+		  output.c
 OBJ		= $(SRC:%.c=%.o)
 HEADER	= ft_mini_ls.h
 LIBFT	= ./libft/libft.a
