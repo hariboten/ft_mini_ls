@@ -1,69 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_bonus.c                                     :+:      :+:    :+:   */
+/*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 23:13:25 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/12/04 00:26:51 by ewatanab         ###   ########.fr       */
+/*   Created: 2020/12/03 14:15:51 by ewatanab          #+#    #+#             */
+/*   Updated: 2020/12/03 21:18:15 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fml_bonus.h"
+#include "ft_mini_ls.h"
 
-void	change_color(mode_t mode)
+bool	ignore_dot(const t_dirent *file)
 {
-	if (S_ISDIR(mode))
-		ft_putstr("\x1b[34m\x1b[49m");
-	if (S_ISLNK(mode))
-		ft_putstr("\x1b[35m\x1b[49m");
-	if (mode & S_IFSOCK && false)
-		ft_putstr("\x1b[32m\x1b[49m");
-	if (S_ISFIFO(mode))
-		ft_putstr("\x1b[33m\x1b[49m");
-	if (!S_ISDIR(mode) && mode & S_IXUSR)
-		ft_putstr("\x1b[31m\x1b[49m");
-	if (S_ISBLK(mode))
-		ft_putstr("\x1b[34m\x1b[46m");
-	if (S_ISCHR(mode))
-		ft_putstr("\x1b[34m\x1b[43m");
-	if (!S_ISDIR(mode) && mode & S_ISUID)
-		ft_putstr("\x1b[30m\x1b[41m");
-	if (!S_ISDIR(mode) && mode & S_ISGID)
-		ft_putstr("\x1b[30m\x1b[46m");
-	if (S_ISDIR(mode) && mode & S_IWOTH && mode & S_ISVTX)
-		ft_putstr("\x1b[30m\x1b[42m");
-	if (S_ISDIR(mode) && mode & S_IWOTH && !(mode & S_ISVTX))
-		ft_putstr("\x1b[30m\x1b[43m");
-}
-
-void	put_file_name_with_color(const t_dirent *file)
-{
-	t_stat	sb;
-
-	if (lstat(file->d_name, &sb) < 0)
-		return ;
-	change_color(sb.st_mode);
-	ft_putstr_fd((char *)file->d_name, 1);
-	ft_putendl_fd("\x1b[39m\x1b[49m", 1);
-}
-
-bool	show_all_file(const t_dirent *file)
-{
-	(void)file;
+	if (!file)
+		return (false);
+	if (file->d_name[0] == '.')
+		return (false);
 	return (true);
 }
 
-void	output_ascending(t_fml *fml)
+void	put_file_name(const t_dirent *file)
+{
+	ft_putendl_fd((char *)file->d_name, 1);
+}
+
+void	output(t_fml *fml)
 {
 	int		i;
 
-	i = 0;
-	while (i < fml->num_ent)
-	{
+	i = fml->num_ent;
+	while (--i >= 0)
 		if (fml->f_ignore_dot(fml->dirent_arr[fml->index[i]]))
 			fml->f_put_file_name(fml->dirent_arr[fml->index[i]]);
-		i++;
-	}
 }
